@@ -1,3 +1,4 @@
+from django.test import LiveServerTestCase
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -5,7 +6,7 @@ import unittest
 
 
 
-class NewVisitor(unittest.TestCase):
+class NewVisitor(LiveServerTestCase):
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 		self.browser.implicitly_wait(3)
@@ -22,7 +23,7 @@ class NewVisitor(unittest.TestCase):
 		'''Eadith heared about a cool new online to-do app
 		She goes to check it out in her home page '''
 
-		self.browser.get('http://localhost:8000')
+		self.browser.get(self.live_server_url)
 
 		#She  notices that the page title mentiones to-do lists
 		self.assertIn('To-Do', self.browser.title)
@@ -58,12 +59,9 @@ class NewVisitor(unittest.TestCase):
 		# Edith wonders whether the site will remember her list. Then she sees
 		# that the site has generated a unique URL for her -- there is some
 		# explanatory text to that effect.
+		self.fail('Finish the test')
 
 		# She visits that URL - her to-do list is still there
 
 
 		# Satisfied, she goes back to sleep
-
-
-if __name__ == '__main__':
-	unittest.main(warnings='ignore')
