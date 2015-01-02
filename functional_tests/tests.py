@@ -85,8 +85,8 @@ class NewVisitor(LiveServerTestCase):
 
 		#Francies gets his own unique URL
 		francies_list_url = self.browser.current_url
-		self.assertRegex(francies_list_url, '/list/.+')
-		self.assertNotIn(francies_list_url, edith_list_url)
+		self.assertRegex(francies_list_url, '/lists/.+')
+		self.assertNotEqual(francies_list_url, edith_list_url)
 
 		#Again there is no trace of Edith's list
 
@@ -94,3 +94,6 @@ class NewVisitor(LiveServerTestCase):
 		self.assertNotIn('Buy peacock feathers')
 		self.assertIn(page_text, 'Buy milk')
 
+
+
+		#satisfied the both go to sleep
